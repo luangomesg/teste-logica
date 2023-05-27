@@ -14,5 +14,25 @@ const products = [
 ]
 
 module.exports = () => {
-	// Seu código vai aqui!
+  let resultado = {};
+
+  for (let i = 0; i < products.length; i++) {
+    let item = products[i].split("-");
+    let cor = item[0];
+    let tamanho = item[1];
+
+    if (resultado[cor]) {
+      if (resultado[cor][tamanho]) {
+        resultado[cor][tamanho] += 1;
+      } else {
+        resultado[cor][tamanho] = 1;
+      }
+    } else {
+      resultado[cor] = {
+        [tamanho]: 1
+      };
+    }
+  }
+
+  return resultado;
 }
